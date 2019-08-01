@@ -96,10 +96,13 @@ class Environment:
             reward = -100.
         else:
             if action == Action.UP:
-                reward = -5.
+#                reward = -5.
+                reward = 1
             elif action == Action.DOWN:
-                reward = -3.
+#                reward = -3.
+                reward = 3
             else:
-                reward = 1.
+#                reward = 1.
+                reward = 7
 
         return image, reward, crashed
