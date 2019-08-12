@@ -33,9 +33,9 @@ This approach was tested for Chrome and Mozilla Firefox.
 ```sh
 $ python test.py
 ```
-This command will restore the pretrained model, stored in `tf-rex/results` and play the T-rex game.
+This command will restore the pretrained model, stored in `tf-rex/results` and play the T-rex game, default is one step critic (our best model)
 
-IMPORTANT: The browser needs to connect with the python side. Therefore, refresh the browser after firing the training command.
+IMPORTANT: The browser needs to connect with the python side. Therefore, refresh the browser after firing the training/testing command.
 
 Training a new model can be done as follow depending on the model that you want to train
 ```sh
