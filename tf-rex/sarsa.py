@@ -103,8 +103,8 @@ def optimize_model(state, action, reward, next_state):
     policy_net.eval()
     target_net.eval()
     with torch.no_grad():
-        next_state_action = select_action(state).item()
-        next_state_values = target_net(next_state).gather(1, next_state_action.unsqueeze(1)).squeeze()
+        next_state_action = select_action(next_state)
+        next_state_values = target_net(next_state).gather(1, next_state_action).squeeze()
     
     # Compute the expected Q values
     expected_state_action_values = (next_state_values * GAMMA) + reward
@@ -144,10 +144,10 @@ if __name__ == "__main__":
     episode_rewards = []
     steps_done = 0
 
-    lr = 1e-4
+    lr = 1e-3
     optimizer = optim.Adam(policy_net.parameters(), lr)
 
-    num_episodes = 500
+    num_episodes = 3000
     
 
     for i_episode in range(num_episodes):
