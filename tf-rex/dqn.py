@@ -320,7 +320,7 @@ if __name__ == "__main__":
             
         # Save weights
         if i_episode%10==0:
-            torch.save(policy_net.state_dict(), 'meta/dino_reward_%d_ep_%d.pt'%(cum_steps,i_episode))
+            torch.save(policy_net.state_dict(), 'meta/dino_dqn_reward_%d_ep_%d.pt'%(cum_steps,i_episode))
     
     print('Complete')
     savename = "final"
@@ -328,5 +328,5 @@ if __name__ == "__main__":
     # env.render()
     # env.close()
     plt.ioff()
-    plt.savefig("dinosaur" + savename + ".png")
-    torch.save(policy_net.state_dict(), 'dino'+savename+'.pt')
+    plt.savefig("dino_dqn_final.png")
+    torch.save(policy_net.state_dict(), 'dino_dqn_final.pt')
