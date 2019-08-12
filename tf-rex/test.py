@@ -17,8 +17,8 @@ import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
 # from sarsa import DQN #same for reinforce
-from one_step_actor_critic import DQN 
-# from main import DQN
+# from one_step_actor_critic import DQN 
+from dqn import DQN
 
 
 
@@ -42,9 +42,9 @@ def select_action(state):
         # t.max(1) will return largest column value of each row.
         # second column on max result is index of where max element was
         # found, so we pick action with the larger expected reward.
-        dist =  torch.distributions.Categorical(policy_net(state)[0].squeeze())
-        action = dist.sample()
-        return action
+        # dist =  torch.distributions.Categorical(policy_net(state)[0].squeeze())
+        # action = dist.sample()
+        # return action
         return policy_net(state).max(1)[1].view(1, 1).long()
     
     
@@ -57,7 +57,7 @@ if __name__=='__main__':
     height = 80
     preprocessor = Preprocessor(width, height)
     
-    fname = 'results/a2c.pt'
+    fname = 'results/test.pt'
 
     n_actions = len(env.actions.keys())
     policy_net = DQN(height, width, n_actions).float().to(device)
